@@ -1,6 +1,6 @@
 module github.com/endot1231/go_todo_app
 
-go 1.13
+go 1.82
 
 require (
 	github.com/caarlos0/env/v6 v6.10.1 // indirect
