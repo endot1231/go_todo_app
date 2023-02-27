@@ -8,6 +8,7 @@ import (
 
 	"github.com/endot1231/go_todo_app/clock"
 	"github.com/endot1231/go_todo_app/config"
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"
 )
 
