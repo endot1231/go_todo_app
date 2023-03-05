@@ -3,6 +3,7 @@ package store
 import (
 	"context"
 	"database/sql"
+	"errors"
 	"fmt"
 	"time"
 
@@ -33,12 +34,17 @@ type Queryer interface {
 	SelectContext(ctx context.Context, dest interface{}, query string, args ...any) error
 }
 
+const (
+	ErrCodeMySQLDuplicateEntity = 162
+)
+
 var (
-	_ Beginner = (*sqlx.DB)(nil)
-	_ Preparer = (*sqlx.DB)(nil)
-	_ Queryer  = (*sqlx.DB)(nil)
-	_ Execer   = (*sqlx.DB)(nil)
-	_ Execer   = (*sqlx.Tx)(nil)
+	_                Beginner = (*sqlx.DB)(nil)
+	_                Preparer = (*sqlx.DB)(nil)
+	_                Queryer  = (*sqlx.DB)(nil)
+	_                Execer   = (*sqlx.DB)(nil)
+	_                Execer   = (*sqlx.Tx)(nil)
+	ErrAlreadyEntity          = errors.New("duplicate entity")
 )
 
 type Repository struct {
